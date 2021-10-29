@@ -12,16 +12,17 @@
   }
   body{
     font-family:'Rampart One', cursive;
-    font-size:50%;
+    font-size:70%;
     margin:1em;
     background:#666;
-    color:#fff;
+    color:rgb(255, 255, 255);
+    
   }
   h2{
     font-family: 'Permanent Marker', cursive;
   }
   h2,p{
-    font-size:40%;
+    font-size:60%;
     font-weight:normal;
   }
   ul,li{
@@ -51,7 +52,7 @@
     float:left;
   }
   ul li h2{
-    font-size:70%;
+    font-size:100%;
     font-weight:bold;
     padding-bottom:10px;
   }
@@ -103,6 +104,8 @@
 
 
   .fill {
+  margin-top: 10px;
+  margin-left: 10px;
   font-size: 10px;
   font-weight: 200;
   letter-spacing: 1px;
@@ -112,8 +115,7 @@
   cursor: pointer;
   position: relative;
   background-color: rgba(0, 0, 0, 0);
-  width: 8px;
-  height: 12px;
+  height: 15px;
 }
 
 .fill::after {
@@ -137,17 +139,17 @@
   </style>
   </head>
   <body>
-    <h1>Google Calendar API Quickstart</h1>
+    <h1>Google Calendar API</h1>
 
     <!--Add buttons to initiate auth sequence and sign out-->
     <button id="authorize_button" class="fill"  style="display: none;">Authorizar</button>
     <button id="signout_button" class="fill" style="display: none;">Salir</button>
 
     <pre id="content" style="white-space: pre-wrap;">
-      <div id="content2" >
+      
         <ul id="lis" >
         </ul>
-      </div>
+   
     </pre>
 
     <script type="text/javascript">
