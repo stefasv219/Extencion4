@@ -3,21 +3,149 @@
   <head>
     <title>Google Calendar API Quickstart</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" type="text/css" href="index.css">
+
+    <style type="text/css">
+  @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Permanent+Marker&family=Rampart+One&display=swap');
+    *{
+    margin:0;
+    padding:0;
+  }
+  body{
+    font-family:'Rampart One', cursive;
+    font-size:50%;
+    margin:1em;
+    background:#666;
+    color:#fff;
+  }
+  h2{
+    font-family: 'Permanent Marker', cursive;
+  }
+  h2,p{
+    font-size:40%;
+    font-weight:normal;
+  }
+  ul,li{
+    list-style:none;
+  }
+  ul{
+    overflow:hidden;
+    padding:3em;
+  }
+  ul li a{
+    text-decoration:none;
+    color:#000;
+    background:#ffc;
+    display:block;
+    height:10em;
+    width:10em;
+    padding:1em;
+    -moz-box-shadow:5px 5px 7px rgba(33,33,33,1);
+    -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+    box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+    -moz-transition:-moz-transform .15s linear;
+    -o-transition:-o-transform .15s linear;
+    -webkit-transition:-webkit-transform .15s linear;
+  }
+  ul li{
+    margin:1em;
+    float:left;
+  }
+  ul li h2{
+    font-size:70%;
+    font-weight:bold;
+    padding-bottom:10px;
+  }
+  ul li p{
+    font-family: 'Indie Flower', cursive;
+    font-size:100%;
+  }
+  ul li a{
+    -webkit-transform: rotate(-6deg);
+    -o-transform: rotate(-6deg);
+    -moz-transform:rotate(-6deg);
+  }
+  ul li:nth-child(even) a{
+    -o-transform:rotate(4deg);
+    -webkit-transform:rotate(4deg);
+    -moz-transform:rotate(4deg);
+    position:relative;
+    top:5px;
+    background:rgb(192, 226, 248);
+  }
+  ul li:nth-child(3n) a{
+    -o-transform:rotate(-3deg);
+    -webkit-transform:rotate(-3deg);
+    -moz-transform:rotate(-3deg);
+    position:relative;
+    top:-5px;
+    background:rgb(255, 204, 235);
+  }
+  ul li:nth-child(5n) a{
+    -o-transform:rotate(5deg);
+    -webkit-transform:rotate(5deg);
+    -moz-transform:rotate(5deg);
+    position:relative;
+    top:-10px;
+  }
+  ul li a:hover,ul li a:focus{
+    box-shadow:10px 10px 7px rgba(0,0,0,.7);
+    -moz-box-shadow:10px 10px 7px rgba(0,0,0,.7);
+    -webkit-box-shadow: 10px 10px 7px rgba(0,0,0,.7);
+    -webkit-transform: scale(1.25);
+    -moz-transform: scale(1.25);
+    -o-transform: scale(1.25);
+    position:relative;
+    z-index:5;
+  }
+  ol{text-align:center;}
+  ol li{display:inline;padding-right:1em;}
+  ol li a{color:#fff;}
+
+
+  .fill {
+  font-size: 10px;
+  font-weight: 200;
+  letter-spacing: 1px;
+  padding: 13px 50px 13px;
+  outline: 0;
+  border: 1px solid black;
+  cursor: pointer;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0);
+  width: 8px;
+  height: 12px;
+}
+
+.fill::after {
+  content: "";
+  background-color: #e4ac63;
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  height: 100%;
+  top: 7px;
+  left: 7px;
+  transition: 0.2s;
+}
+
+.fill:hover::after {
+  top: 0px;
+  left: 0px;
+}
+
+  
+  </style>
   </head>
   <body>
     <h1>Google Calendar API Quickstart</h1>
 
     <!--Add buttons to initiate auth sequence and sign out-->
-    <button id="authorize_button" style="display: none;">Authorize</button>
-    <button id="signout_button" style="display: none;">Sign Out</button>
+    <button id="authorize_button" class="fill"  style="display: none;">Authorizar</button>
+    <button id="signout_button" class="fill" style="display: none;">Salir</button>
 
     <pre id="content" style="white-space: pre-wrap;">
       <div id="content2" >
-        <ul>
-          <li id="lis">
-
-          </li>
+        <ul id="lis" >
         </ul>
       </div>
     </pre>
@@ -64,7 +192,7 @@
           authorizeButton.onclick = handleAuthClick;
           signoutButton.onclick = handleSignoutClick;
         }, function(error) {
-          appendPre(JSON.stringify(error, null, 2));
+          //appendPre(JSON.stringify(error, null, 2));
         });
       }
 
@@ -102,24 +230,32 @@
        * as its text node. Used to display the results of the API call.
        *
        * @param {string} message Text to be placed in pre element.
-       */
-      function appendPre(message) {
-        var pre = document.getElementById('content');
-        var textContent = document.createTextNode(message + '\n');
-        console.log(message)
-        pre.appendChild(textContent);
-      }
-      function appendt(message) {
+       */function appendpRE(message) {
+        var pre = document.getElementById('lis');
+        var p = document.createElement('p');
+        p.textContent=message
+        pre.appendChild(p)
+       }
+  
+      function appendt(nombre,message) {
         var pre = document.getElementById('lis');
         var a = document.createElement('a');
+        var li = document.createElement('li')
         var h2 = document.createElement('h2');
         var p = document.createElement('p');
+        var hora = document.createElement('p');
         a.setAttribute('href', "#");
-        h2.textContent='hola'
-        p.textContent='holaholagla'
-        pre.appendChild(a)
+        h2.textContent=message[0]
+        console.log(message.length)
+        if(message.length==2){
+          hora.textContent=message[1]
+        }
+        p.textContent=nombre
+        pre.appendChild(li)
+        li.appendChild(a)
         a.appendChild(h2)
         a.appendChild(p)
+        a.appendChild(hora)
         var textContent = document.createTextNode(message + '\n');
         console.log(message)
         //pre.appendChild(textContent);
@@ -140,7 +276,7 @@
           'orderBy': 'startTime'
         }).then(function(response) {
           var events = response.result.items;
-          appendPre('Upcoming events:');
+          //appendPre('Upcoming events:');
 
           if (events.length > 0) {
             for (i = 0; i < events.length; i++) {
@@ -150,12 +286,15 @@
                 when = event.start.date;
               }
               console.log(event.summary)
+              let nombre = event.summary
               var fecha= when.split("T")
-              console.log(fecha)
-              appendt(event.summary + ' (' + when + ')')
+              console.log(nombre)
+              appendt(nombre,fecha)
+              //appendt(event.summary + ' (' + when + ')')
             }
           } else {
-            appendPre('No upcoming events found.');
+            var mes='No hay eventos'
+            appendPre(mes);
           }
         });
       }
