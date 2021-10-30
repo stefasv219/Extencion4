@@ -250,7 +250,14 @@
         h2.textContent=message[0]
         console.log(message.length)
         if(message.length==2){
-          hora.textContent=message[1]
+          let hor=message[1].split("-")
+          var timeString = hor[0];
+          var H = +timeString.substr(0, 2);
+          var h = H % 12 || 12;
+          var ampm = (H < 12 || H === 24) ? "AM" : "PM";
+          timeString = h + timeString.substr(2, 3) + ampm;
+          console.log(timeString)
+          hora.textContent="Hora: "+timeString
         }
         p.textContent=nombre
         pre.appendChild(li)
@@ -261,6 +268,7 @@
         var textContent = document.createTextNode(message + '\n');
         console.log(message)
         //pre.appendChild(textContent);
+
       }
 
       /**
@@ -290,6 +298,7 @@
               console.log(event.summary)
               let nombre = event.summary
               var fecha= when.split("T")
+              
               console.log(nombre)
               appendt(nombre,fecha)
               //appendt(event.summary + ' (' + when + ')')
